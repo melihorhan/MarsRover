@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Application", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Test", "test\MarsRover.Test\MarsRover.Test.csproj", "{19B5C4F9-EEA2-4D88-A5C6-3809149D690B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Shared", "MarsRover.Shared\MarsRover.Shared.csproj", "{7F64188C-8F4B-424F-A441-8434C1688867}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Shared", "src\MarsRover.Shared\MarsRover.Shared.csproj", "{7F64188C-8F4B-424F-A441-8434C1688867}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

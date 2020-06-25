@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MarsRover.Shared\MarsRover.Shared.csproj" />
+    <ProjectReference Include="..\MarsRover.Shared\MarsRover.Shared.csproj" />
   </ItemGroup>
 
 </Project>
