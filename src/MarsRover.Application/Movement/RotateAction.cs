@@ -7,7 +7,7 @@ namespace MarsRover.Application.Movement
 {
     public static class RoteteAction
     {
-        public static Dictionary<CompassDirection, CompassDirection> LeftTurnDirections = new Dictionary<CompassDirection, CompassDirection>
+        private static Dictionary<CompassDirection, CompassDirection> LeftTurnDirections = new Dictionary<CompassDirection, CompassDirection>
         {
             { CompassDirection.N, CompassDirection.W },
             { CompassDirection.S, CompassDirection.E },
@@ -15,7 +15,7 @@ namespace MarsRover.Application.Movement
             { CompassDirection.W, CompassDirection.S },
         };
 
-        public static Dictionary<CompassDirection, CompassDirection> RightTurnDirections = new Dictionary<CompassDirection, CompassDirection>
+        private static Dictionary<CompassDirection, CompassDirection> RightTurnDirections = new Dictionary<CompassDirection, CompassDirection>
         {
             { CompassDirection.N, CompassDirection.E },
             { CompassDirection.S, CompassDirection.W },
@@ -24,35 +24,19 @@ namespace MarsRover.Application.Movement
         };
 
 
+        private static Dictionary<CompassDirection, Func<IPosition, IPosition>> ForwardDirections = new Dictionary<CompassDirection, Func<IPosition, IPosition>>
+        {
+            { CompassDirection.N, (p)=> p.ChangePoint(p.X, p.Y + 1) },
+            { CompassDirection.S, (p)=>p.ChangePoint(p.X, p.Y - 1) },
+            { CompassDirection.E, (p)=>p.ChangePoint(p.X + 1, p.Y) },
+            { CompassDirection.W, (p)=>p.ChangePoint(p.X - 1, p.Y)},
+        };
+
         public static IDictionary<Shared.Enums.Movement, Func<IPosition, IPosition>> MovementActions = new Dictionary<Shared.Enums.Movement, Func<IPosition, IPosition>>()
         {
             {Shared.Enums.Movement.L, (p) => p.ChangeDirection(LeftTurnDirections[p.Direction]) },
             {Shared.Enums.Movement.R, (p) => p.ChangeDirection(RightTurnDirections[p.Direction]) },
-            {
-                Shared.Enums.Movement.M, (p) =>
-                {
-                    if (p.Direction == CompassDirection.N)
-                    {
-                        p.ChangePoint(p.X, p.Y + 1);
-                    }
-
-                    else if (p.Direction == CompassDirection.E)
-                    {
-                        p.ChangePoint(p.X + 1, p.Y);
-                    }
-
-                    else if (p.Direction == CompassDirection.S)
-                    {
-                        p.ChangePoint(p.X, p.Y - 1);
-                    }
-                    else if (p.Direction == CompassDirection.W)
-                    {
-                        p.ChangePoint(p.X - 1, p.Y);
-                    }
-
-                    return p;
-                }
-            }
+            {Shared.Enums.Movement.M, (p) => ForwardDirections[p.Direction].Invoke(p)}
         };
     }
 }
