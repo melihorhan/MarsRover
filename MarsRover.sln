@@ -7,13 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3CAB0329-113
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CDBF805D-690B-40E8-A33C-CE284E16A79C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Application", "src\MarsRover.Application\MarsRover.Application.csproj", "{A9739733-ECB3-4A31-858C-B6236CC2DAC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Application", "src\MarsRover.Application\MarsRover.Application.csproj", "{A9739733-ECB3-4A31-858C-B6236CC2DAC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Test", "test\MarsRover.Test\MarsRover.Test.csproj", "{19B5C4F9-EEA2-4D88-A5C6-3809149D690B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Test", "test\MarsRover.Test\MarsRover.Test.csproj", "{19B5C4F9-EEA2-4D88-A5C6-3809149D690B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestProject1", "NUnitTestProject1\NUnitTestProject1.csproj", "{A012CD4E-7014-4ABD-A039-37C6BFEE06B9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Shared", "MarsRover.Shared\MarsRover.Shared.csproj", "{7F64188C-8F4B-424F-A441-8434C1688867}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Shared", "MarsRover.Shared\MarsRover.Shared.csproj", "{7F64188C-8F4B-424F-A441-8434C1688867}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{19B5C4F9-EEA2-4D88-A5C6-3809149D690B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19B5C4F9-EEA2-4D88-A5C6-3809149D690B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19B5C4F9-EEA2-4D88-A5C6-3809149D690B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A012CD4E-7014-4ABD-A039-37C6BFEE06B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A012CD4E-7014-4ABD-A039-37C6BFEE06B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A012CD4E-7014-4ABD-A039-37C6BFEE06B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A012CD4E-7014-4ABD-A039-37C6BFEE06B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F64188C-8F4B-424F-A441-8434C1688867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F64188C-8F4B-424F-A441-8434C1688867}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F64188C-8F4B-424F-A441-8434C1688867}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,7 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A9739733-ECB3-4A31-858C-B6236CC2DAC5} = {3CAB0329-113E-4888-A5BE-38B870745905}
 		{19B5C4F9-EEA2-4D88-A5C6-3809149D690B} = {CDBF805D-690B-40E8-A33C-CE284E16A79C}
-		{A012CD4E-7014-4ABD-A039-37C6BFEE06B9} = {CDBF805D-690B-40E8-A33C-CE284E16A79C}
 		{7F64188C-8F4B-424F-A441-8434C1688867} = {3CAB0329-113E-4888-A5BE-38B870745905}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

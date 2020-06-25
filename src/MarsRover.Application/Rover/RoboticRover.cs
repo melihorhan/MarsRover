@@ -30,6 +30,7 @@ namespace MarsRover.Application.Rover
             }
 
             this.position = position;
+            isLoad = true;
 
         }
 

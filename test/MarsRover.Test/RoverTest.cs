@@ -21,9 +21,9 @@ namespace MarsRover.Test
 
         [TestCase(1, 2, CompassDirection.W)]
         [TestCase(6, 7, CompassDirection.S)]
-        public void Load__given_valid_deploy_point_and_direction_exposes_as_properties(int expectedX, int expectedY, CompassDirection expectedCardinalDirection)
+        public void Load__given_valid_deploy_point_and_direction_exposes_as_properties(int expectedX, int expectedY, CompassDirection expectedDirection)
         {
-            var expectedPoint = new Position(expectedX, expectedY, expectedCardinalDirection);
+            var expectedPoint = new Position(expectedX, expectedY, expectedDirection);
 
             mockSurface.Setup(x => x.IsValid(expectedPoint)).Returns(true);
 
@@ -32,6 +32,17 @@ namespace MarsRover.Test
             rover.Load(mockSurface.Object, expectedPoint);
 
             Assert.AreEqual(expectedPoint, rover.Position);
+        }
+
+        [Test]
+        public void Load__after_rover_has_been_loaded_returns_true()
+        {
+            var position = new Position(0, 0, CompassDirection.S);
+            mockSurface.Setup(x => x.IsValid(position)).Returns(true);
+
+            IRover rover = new RoboticRover();
+
+            Assert.IsFalse(rover.IsLoad);
         }
 
         [Test]
@@ -49,7 +60,7 @@ namespace MarsRover.Test
 
 
         [Test]
-        public void Load_after_rover_has_been_deployed_returns_true()
+        public void Load__before_Rover_has_been_loaded_returns_false_returns_true()
         {
             var position = new Position(0, 0, CompassDirection.S);
             mockSurface.Setup(x => x.IsValid(position)).Returns(true);
@@ -63,6 +74,7 @@ namespace MarsRover.Test
 
         [TestCase(1, 1, CompassDirection.S, Movement.R, Movement.R, Movement.M, 1, 2, CompassDirection.N)]
         [TestCase(2, 4, CompassDirection.E, Movement.M, Movement.M, Movement.M, 5, 4, CompassDirection.E)]
+        [TestCase(1, 2, CompassDirection.N, Movement.L, Movement.M, Movement.M, 5, 4, CompassDirection.E)]
         public void Alters_position_and_direction_in_response_to_movement_list(int startX, int startY,
             CompassDirection startDirection, Movement firstMove, Movement secondMove, Movement thirdMove,
             int expectedX, int expectedY, CompassDirection expectedDirection)
