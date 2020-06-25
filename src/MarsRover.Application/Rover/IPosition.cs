@@ -7,5 +7,7 @@ namespace MarsRover.Application.Rover
         int X { get; }
         int Y { get; }
         CompassDirection Direction { get; }
+        IPosition ChangeDirection(CompassDirection direction);
+        IPosition ChangePoint(int x, int y);
     }
 }

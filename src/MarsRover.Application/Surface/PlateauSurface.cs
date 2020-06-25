@@ -18,6 +18,7 @@ namespace MarsRover.Application.Surface
 
 
         #region Explicitly Implementations
+
         void ISurface.Draw(int width, int height) { Draw(width, height); }
 
         bool ISurface.IsValid(IPosition position) { return IsValid(position); }
@@ -27,6 +28,7 @@ namespace MarsRover.Application.Surface
             get => size;
             set => size = value;
         }
+
         #endregion
     }
 }

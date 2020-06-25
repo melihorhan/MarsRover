@@ -4,11 +4,11 @@ namespace MarsRover.Application.Rover
 {
     public class Position : IPosition
     {
-        public int X { get; }
+        private int X { get; set; }
 
-        public int Y { get; }
+        private int Y { get; set; }
 
-        public CompassDirection Direction { get; }
+        private CompassDirection Direction { get; set; }
 
         public Position(int x, int y, CompassDirection direction)
         {
@@ -17,10 +17,27 @@ namespace MarsRover.Application.Rover
             Direction = direction;
         }
 
+        #region Explicitly Implementations
+
         int IPosition.X => X;
 
         int IPosition.Y => Y;
 
         CompassDirection IPosition.Direction => Direction;
+
+        IPosition IPosition.ChangeDirection(CompassDirection direction)
+        {
+            Direction = direction;
+            return this;
+        }
+
+        IPosition IPosition.ChangePoint(int x, int y)
+        {
+            X = x;
+            Y = y;
+            return this;
+        }
+
+        #endregion
     }
 }
