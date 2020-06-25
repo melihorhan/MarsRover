@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace MarsRover.Application
+namespace MarsRover.Host
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
