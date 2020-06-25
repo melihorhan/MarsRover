@@ -1,6 +1,6 @@
 ﻿using MarsRover.Shared.Enums;
 
-namespace MarsRover.Application.Rover
+namespace MarsRover.Application.Position
 {
     public class Position : IPosition
     {

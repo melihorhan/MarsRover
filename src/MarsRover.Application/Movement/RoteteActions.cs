@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using MarsRover.Application.Rover;
+using MarsRover.Application.Position;
 using MarsRover.Shared.Enums;
 
 namespace MarsRover.Application.Movement
 {
-    public static class RoteteAction
+    public static class RoteteActions
     {
         private static Dictionary<CompassDirection, CompassDirection> LeftTurnDirections = new Dictionary<CompassDirection, CompassDirection>
         {

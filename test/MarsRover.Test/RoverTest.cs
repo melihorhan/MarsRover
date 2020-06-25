@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MarsRover.Application.Position;
 using MarsRover.Application.Rover;
 using MarsRover.Application.Surface;
 using MarsRover.Shared.Enums;
@@ -45,6 +46,20 @@ namespace MarsRover.Test
 
             Assert.Throws<OverflowException>(() => rover.Load(mockSurface.Object, position));
         }
+
+
+        [Test]
+        public void Load_after_rover_has_been_deployed_returns_true()
+        {
+            var position = new Position(0, 0, CompassDirection.S);
+            mockSurface.Setup(x => x.IsValid(position)).Returns(true);
+
+            IRover rover = new RoboticRover();
+            rover.Load(mockSurface.Object, position);
+
+            Assert.IsTrue(rover.IsLoad);
+        }
+
 
         [TestCase(1, 1, CompassDirection.S, Movement.R, Movement.R, Movement.M, 1, 2, CompassDirection.N)]
         [TestCase(2, 4, CompassDirection.E, Movement.M, Movement.M, Movement.M, 5, 4, CompassDirection.E)]

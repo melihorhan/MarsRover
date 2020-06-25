@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MarsRover.Application.Movement;
+using MarsRover.Application.Position;
 using MarsRover.Application.Surface;
 
 namespace MarsRover.Application.Rover
@@ -36,7 +37,7 @@ namespace MarsRover.Application.Rover
         {
             foreach (var movement in movements)
             {
-                RoteteAction.MovementActions[movement].Invoke(position);
+                RoteteActions.MovementActions[movement].Invoke(position);
             }
 
         }

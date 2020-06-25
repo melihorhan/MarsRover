@@ -1,4 +1,4 @@
-﻿using MarsRover.Application.Rover;
+﻿using MarsRover.Application.Position;
 
 namespace MarsRover.Application.Surface
 {
