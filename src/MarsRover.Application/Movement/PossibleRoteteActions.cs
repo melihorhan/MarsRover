@@ -5,7 +5,7 @@ using MarsRover.Shared.Enums;
 
 namespace MarsRover.Application.Movement
 {
-    public static class RoteteActions
+    public static class PossibleRoteteActions
     {
         private static readonly IDictionary<CompassDirection, CompassDirection> LeftTurnDirections = new Dictionary<CompassDirection, CompassDirection>
         {
