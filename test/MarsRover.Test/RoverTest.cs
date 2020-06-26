@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace MarsRover.Test
 {
-    public class RoverTest
+    public class RoverTest : TestBase
     {
         private Mock<ISurface> mockSurface;
 
@@ -74,7 +74,6 @@ namespace MarsRover.Test
 
         [TestCase(1, 1, CompassDirection.S, Movement.R, Movement.R, Movement.M, 1, 2, CompassDirection.N)]
         [TestCase(2, 4, CompassDirection.E, Movement.M, Movement.M, Movement.M, 5, 4, CompassDirection.E)]
-        [TestCase(1, 2, CompassDirection.N, Movement.L, Movement.M, Movement.M, 5, 4, CompassDirection.E)]
         public void Move__set_last_position_as_movement_list(int startX, int startY,
             CompassDirection startDirection, Movement firstMove, Movement secondMove, Movement thirdMove,
             int expectedX, int expectedY, CompassDirection expectedDirection)

@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace MarsRover.Test
 {
-    public class SurfaceTest
+    public class SurfaceTest : TestBase
     {
         private Mock<IPosition> position;
 
@@ -21,11 +21,10 @@ namespace MarsRover.Test
         [Test]
         public void Draw__generate_plateau_size_with_same_values(int expectedWidth, int expectedHeight)
         {
-            ISurface plateau = new PlateauSurface();
-            plateau.Draw(expectedWidth, expectedHeight);
+            surface.Draw(expectedWidth, expectedHeight);
 
-            Assert.AreEqual(expectedWidth, plateau.Size.Width);
-            Assert.AreEqual(expectedHeight, plateau.Size.Height);
+            Assert.AreEqual(expectedWidth, surface.Size.Width);
+            Assert.AreEqual(expectedHeight, surface.Size.Height);
         }
 
         [TestCase(2, 2, 2, 2)]
@@ -34,13 +33,12 @@ namespace MarsRover.Test
         [Test]
         public void IsValid__when_point_is_within_size_boundary_returns_true(int surfaceWidth, int surfaceHeight, int positionX, int positionY)
         {
-            ISurface plateau = new PlateauSurface();
-            plateau.Draw(surfaceWidth, surfaceHeight);
+            surface.Draw(surfaceWidth, surfaceHeight);
 
             position.Setup(p => p.X).Returns(positionX);
             position.Setup(p => p.Y).Returns(positionY);
 
-            Assert.True(plateau.IsValid(position.Object));
+            Assert.True(surface.IsValid(position.Object));
         }
 
         [TestCase(1, 2, 2, 2)]
@@ -49,13 +47,12 @@ namespace MarsRover.Test
         [Test]
         public void IsValid__point_is_outside_size_boundary_returns_false(int surfaceWidth, int surfaceHeight, int positionX, int positionY)
         {
-            ISurface plateau = new PlateauSurface();
-            plateau.Draw(surfaceWidth, surfaceHeight);
+            surface.Draw(surfaceWidth, surfaceHeight);
 
             position.Setup(p => p.X).Returns(positionX);
             position.Setup(p => p.Y).Returns(positionY);
 
-            Assert.False(plateau.IsValid(position.Object));
+            Assert.False(surface.IsValid(position.Object));
         }
     }
 }
