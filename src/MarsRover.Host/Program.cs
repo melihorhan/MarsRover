@@ -1,7 +1,6 @@
 ﻿using System;
 using MarsRover.Application;
-using MarsRover.Application.Surface;
-using Microsoft.Extensions.DependencyInjection;
+using MarsRover.Host.Configuration;
 
 namespace MarsRover.Host
 {
@@ -9,15 +8,7 @@ namespace MarsRover.Host
     {
         static void Main(string[] args)
         {
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IHandler, PlataueHandler>()
-                .AddSingleton<IHandler, PositionHandler>()
-                .AddSingleton<IHandler, RoverHandler>()
-                .AddSingleton<ISurface, PlateauSurface>()
-                .AddSingleton<ICommandManager, CommandManager>()
-                .AddSingleton<IRoverManager, RoverManager>()
-                .BuildServiceProvider();
-
+            var serviceProvider = ApplicationConfiguration.BuildService();
 
             var commandManager = (ICommandManager)serviceProvider.GetService(typeof(ICommandManager));
 
