@@ -2,10 +2,10 @@
 
 namespace MarsRover.Application
 {
-    public interface IHandler<out T>
+    public interface IHandler
     {
         Regex CommandPattern { get; }
-        T Parse(string command);
         bool Match(string command);
+        void Run(string command);
     }
 }

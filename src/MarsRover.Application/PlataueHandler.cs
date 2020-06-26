@@ -3,14 +3,15 @@ using MarsRover.Application.Surface;
 
 namespace MarsRover.Application
 {
-    public class PlataueHandler : IHandler<Size>
+    public class PlataueHandler : IHandler
     {
+        private readonly ISurface surface;
+
         private Regex CommandPattern => new Regex("^\\d+ \\d+$");
 
-        protected internal static Size Parse(string command)
+        public PlataueHandler(ISurface surface)
         {
-            var splitCommand = command.Split(' ');
-            return new Size(int.Parse(splitCommand[0]), int.Parse(splitCommand[0]));
+            this.surface = surface;
         }
 
         protected internal bool Match(string command)
@@ -18,14 +19,20 @@ namespace MarsRover.Application
             return CommandPattern.IsMatch(command);
         }
 
+        protected internal void Run(string command)
+        {
+            var splitCommand = command.Split(' ');
+            surface.Draw(int.Parse(splitCommand[0]), int.Parse(splitCommand[1]));
+        }
+
         #region Explicitly Implementations
 
 
-        Regex IHandler<Size>.CommandPattern => throw new System.NotImplementedException();
+        Regex IHandler.CommandPattern => CommandPattern;
 
-        Size IHandler<Size>.Parse(string command) { return Parse(command); }
+        bool IHandler.Match(string command) { return Match(command); }
 
-        bool IHandler<Size>.Match(string command) { return Match(command); }
+        void IHandler.Run(string command) { Run(command); }
 
         #endregion
     }

@@ -1,16 +1,16 @@
 ﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
-using MarsRover.Shared.Enums;
 
 namespace MarsRover.Application
 {
-    public class PositionHandler : IHandler
+    public class RoverHandler : IHandler
     {
         private readonly IRoverManager roverManager;
 
-        private Regex CommandPattern => new Regex("^\\d+ \\d+ [NSWE]$");
+        private Regex CommandPattern => new Regex("^[LMR]+$");
 
-        public PositionHandler(IRoverManager roverManager)
+        public RoverHandler(IRoverManager roverManager)
         {
             this.roverManager = roverManager;
         }
@@ -22,13 +22,7 @@ namespace MarsRover.Application
 
         protected internal void Run(string command)
         {
-
-            var commandArray = command.Split(' ');
-            var x = int.Parse(commandArray[0]);
-            var y = int.Parse(commandArray[1]);
-            var direction = Enum.Parse<CompassDirection>(commandArray[2]);
-
-            roverManager.LoadRover(x, y, direction);
+            roverManager.CurrentRover?.Move(command.Select(c => Enum.Parse<Shared.Enums.Movement>(c.ToString())).ToList());
         }
 
         #region Explicitly Implementations
