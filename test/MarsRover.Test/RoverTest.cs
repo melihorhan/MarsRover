@@ -46,7 +46,7 @@ namespace MarsRover.Test
         }
 
         [Test]
-        public void Load__invalid_point_throws_Exception()
+        public void Load__invalid_point_throws_exception()
         {
             var position = new Position(0, 0, CompassDirection.S);
 
@@ -75,7 +75,7 @@ namespace MarsRover.Test
         [TestCase(1, 1, CompassDirection.S, Movement.R, Movement.R, Movement.M, 1, 2, CompassDirection.N)]
         [TestCase(2, 4, CompassDirection.E, Movement.M, Movement.M, Movement.M, 5, 4, CompassDirection.E)]
         [TestCase(1, 2, CompassDirection.N, Movement.L, Movement.M, Movement.M, 5, 4, CompassDirection.E)]
-        public void Alters_position_and_direction_in_response_to_movement_list(int startX, int startY,
+        public void Move__set_last_position_as_movement_list(int startX, int startY,
             CompassDirection startDirection, Movement firstMove, Movement secondMove, Movement thirdMove,
             int expectedX, int expectedY, CompassDirection expectedDirection)
         {

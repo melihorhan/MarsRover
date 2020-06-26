@@ -38,7 +38,7 @@ namespace MarsRover.Application.Rover
         {
             foreach (var movement in movements)
             {
-                RoteteActions.MovementActions[movement].Invoke(position);
+                PossibleRoteteActions.MovementActions[movement].Invoke(position);
             }
 
         }
